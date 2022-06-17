@@ -1,0 +1,54 @@
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: #fef9ef;
+    display: flex;
+    flex-direction: column;
+}
+
+/*header styles*/
+header {
+    background: #03256c;
+    padding: 15px 25px;
+}
+
+header h1 {
+    color: #fed766;
+    font-size: 35px;
+}
+/*end header styles*/
+
+/*main content styles*/
+main {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 450px;
+    align-items: center;
+}
+
+.buttons {
+    padding: 10px 15px;
+}
+
+.grape {
+    outline: none;
+    border: none;
+    padding: 10px 25px;
+    background: #f865b0;
+    border-radius: 10px;
+    border: 2px solid #0496ff;
+}
+
+.grape:hover {
+    border: 2px solid #03256c;
+}
+/*end main content styles*/
+
+/*footer styles*/
+footer {
+    background: #03256c;
+    color: #fed766;
+    padding: 10px 20px;
+    font-size: 25px;
+}
+/*end footer styles*/
