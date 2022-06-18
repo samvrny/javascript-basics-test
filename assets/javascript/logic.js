@@ -125,7 +125,7 @@ var highScorePage = function() {
     var theEndButtons = document.createElement("div");
 
     theEnd.innerHTML = "<h2 class = 'quiz-titles'>The quiz is over!</h2>";
-    theEndForm.innerHTML = "<form><h3 class = 'end-form-title'>Add your initials and save your score!</h3><input class = 'text-box' type= 'text' placeholder = 'Your Initials'/></form>";
+    theEndForm.innerHTML = "<form><h3 class = 'end-form-title'>Add your initials and save your score!</h3><input class = 'text-box' type= 'text' placeholder = 'Your Initials'/><button class = 'buttons' type = 'submit'></button></form>";
     theEndButtons.innerHTML = "<form><button class = 'buttons'>Play Again</button><button class = 'buttons'>Veiw Highscores</button></form>";
 
     form.appendChild(theEnd);

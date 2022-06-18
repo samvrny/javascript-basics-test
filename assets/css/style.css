@@ -25,6 +25,7 @@ main {
     align-items: center;
     height: 475px;
 }
+
 form {
     display: flex;
     flex-direction: column;
