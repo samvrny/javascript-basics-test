@@ -3,6 +3,7 @@ body {
     background: #fef9ef;
     display: flex;
     flex-direction: column;
+    flex-wrap: wrap;
 }
 
 /*header styles*/
@@ -23,7 +24,7 @@ main {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: 475px;
+    height: 100%;
 }
 
 form {
@@ -32,6 +33,24 @@ form {
     justify-content: center;
     align-items: center;
     margin: 10px;
+}
+
+#quiztimer {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    border: none;
+    display: block;
+    width: 100%;
+    padding: 10px;
+    font-size: 1.2rem;
+    text-align: center;
+    margin-top: 50px;
+    margin-bottom: 10px;
+    border: 2px solid #0496ff;
+    border-radius: 6px;
+    resize: none;
+    overflow: hidden;
 }
 
 .buttons {

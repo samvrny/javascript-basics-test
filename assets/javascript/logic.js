@@ -20,7 +20,7 @@ form.appendChild(quizButtons);
 function quizTimer() {
     console.log(timeRemaining);
         time = setInterval( function() {
-        if (timeRemaining > 1) {
+        if (timeRemaining > 0) {
              timeRemaining --;
         }
         else {
