@@ -9,6 +9,8 @@ var question3;
 var question3Buttons;
 var question4;
 var question4Buttons;
+// var theEnd;
+// var theEndButtons; //These may need to be used for the theEnd function. We shall see.
 
 //Initial screen when page loads up
 
@@ -56,6 +58,7 @@ var secondQuestion = function(event) {
     question2Buttons.addEventListener("click", thirdQuestion);
 };
 
+//third question screen
 var thirdQuestion = function(event) {
     event.preventDefault();
     question2.remove();
@@ -73,6 +76,7 @@ var thirdQuestion = function(event) {
     question3Buttons.addEventListener("click", fourthQuestion);
 };
 
+//fourth question screen
 var fourthQuestion = function(event) {
     event.preventDefault();
     question3.remove();
@@ -95,6 +99,17 @@ var theEnd = function(event) {
     question4.remove();
     question4Buttons.remove();
 
+    var theEnd = document.createElement("div");
+    var theEndForm = document.createElement("div");
+    var theEndButtons = document.createElement("div");
+
+    theEnd.innerHTML = "<h2 class = 'quiz-titles'>The quiz is over!</h2>";
+    theEndForm.innerHTML = "<h3 class = 'end-form-title'>Add your initials and save your score!</h3><input class = 'text-box' type= 'text' placeholder = 'Your Initials'/>";
+    theEndButtons.innerHTML = "<button class = 'buttons'>Play Again</button><button class = 'buttons'>Veiw Highscores</button>";
+
+    form.appendChild(theEnd);
+    form.appendChild(theEndForm);
+    form.appendChild(theEndButtons);
 };
 
 
