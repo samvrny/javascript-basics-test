@@ -3,6 +3,7 @@ var header = document.querySelector("#quiz-header");
 var buttons = document.querySelector("#buttons-div");
 var question;
 var questionButtons;
+var time;
 var timeRemaining = 15 // this is the global timer variable. It can be deducted from anywhere.
 //Initial screen when page loads up
 
@@ -18,12 +19,12 @@ form.appendChild(quizButtons);
 //Timer function THIS WORKS THANK GOD :)
 function quizTimer() {
     console.log(timeRemaining);
-    var time = setInterval( function() {
+        time = setInterval( function() {
         if (timeRemaining > 1) {
              timeRemaining --;
         }
         else {
-            clearInterval(time);
+            clearInterval(time); //this stops the timer
             highScorePage();
         } console.log(timeRemaining);
     }, 1000);
@@ -109,6 +110,7 @@ var fourthQuestion = function(event) {
 
 var theEnd = function(event) { //for timer to work in this context, this has to be 2 functions. One to clear all the data if the timer runs out, and then to move on to the end, so on and so forth
     event.preventDefault();
+    clearInterval(time); //this stops the timer
     question.remove();
     questionButtons.remove();
     highScorePage();
@@ -117,7 +119,7 @@ var theEnd = function(event) { //for timer to work in this context, this has to 
 var highScorePage = function() {
     question.remove();
     questionButtons.remove();
-    
+
     var theEnd = document.createElement("div");
     var theEndForm = document.createElement("div");
     var theEndButtons = document.createElement("div");
