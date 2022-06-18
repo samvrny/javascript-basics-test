@@ -23,13 +23,34 @@ quizButtons.innerHTML ="<button class = 'buttons'>Begin!</button>";
 form.appendChild(quizHeader);
 form.appendChild(quizButtons);
 
+//Timer function THIS WORKS THANK GOD :)
+function quizTimer() {
+    var timeRemaining = 25;
+    console.log(timeRemaining);
+    var time = setInterval( function() {
+        if (timeRemaining > 1) {
+             timeRemaining --;
+        }
+        else {
+            clearInterval(time);
+            theEnd();
+        } console.log(timeRemaining);
+    }, 1000);
+};
+
 //first question screen
 var firstQuestion = function(event) {  //should I add event in the parenthsis for this? Why would that even be there?
     event.preventDefault();
     quizHeader.remove();
     quizButtons.remove();
+
+    //TIMER call
+    quizTimer();
+
     question1 = document.createElement("div");
     question1Buttons = document.createElement("div");
+
+    //COULD just add another div for the correct answer and make the wrong answers their own div.... But holy smokes this is insane. How in the F is this supposed to actually work :()
     
     question1.innerHTML = "<h2 class = 'quiz-titles'>What does DOM stand for?</h2>";
     question1Buttons.innerHTML = "<button class = 'buttons'>Domino Opinon Mayonaise</button><button class = 'buttons'>Blank</button>";
@@ -94,7 +115,7 @@ var fourthQuestion = function(event) {
     question4Buttons.addEventListener("click", theEnd);
 };
 
-var theEnd = function(event) {
+var theEnd = function(event) { //for timer to work in this context, this has to be 2 functions. One to clear all the data if the timer runs out, and then to move on to the end, so on and so forth
     event.preventDefault();
     question4.remove();
     question4Buttons.remove();
