@@ -18,12 +18,19 @@ header h1 {
 /*end header styles*/
 
 /*main content styles*/
+main {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 475px;
+}
 form {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    height: 450px;
     align-items: center;
+    margin: 10px;
 }
 
 .buttons {
