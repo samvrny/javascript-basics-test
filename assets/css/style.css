@@ -18,7 +18,7 @@ header h1 {
 /*end header styles*/
 
 /*main content styles*/
-main {
+form {
     display: flex;
     flex-direction: column;
     justify-content: center;

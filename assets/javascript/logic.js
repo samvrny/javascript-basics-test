@@ -12,3 +12,5 @@ quizButtons.innerHTML ="<button class = 'buttons'>Begin!</button>";
 
 body.appendChild(quizHeader);
 body.appendChild(quizButtons);
+
+quizButtons.addEventListener("click", firstQuestion);
