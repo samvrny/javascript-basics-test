@@ -27,17 +27,17 @@ function quizTimer() {
             clearInterval(time); //this stops the timer
             highScorePage();
         } console.log(timeRemaining);
+        timeText = document.querySelector("#quiztimer");
+        timeText.value = timeRemaining;
     }, 1000);
 };
 
 //first question screen
 var firstQuestion = function(event) {  //should I add event in the parenthsis for this? Why would that even be there?
+    quizTimer(); //NOTE: This had to be at the top of this function for everything to display
     event.preventDefault();
     quizHeader.remove();
     quizButtons.remove();
-
-    //TIMER call
-    quizTimer();
 
     question = document.createElement("div");
     questionButtons = document.createElement("div");
@@ -108,9 +108,9 @@ var fourthQuestion = function(event) {
 };
 
 
-var theEnd = function(event) { //for timer to work in this context, this has to be 2 functions. One to clear all the data if the timer runs out, and then to move on to the end, so on and so forth
+var theEnd = function(event) { //for timer to work in this context, this has to be 2 functions.
     event.preventDefault();
-    clearInterval(time); //this stops the timer
+    clearInterval(time); //this stops the timer IMPORTANT
     question.remove();
     questionButtons.remove();
     highScorePage();
