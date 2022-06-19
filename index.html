@@ -14,13 +14,21 @@
     </header>
     <!--end header-->
     <!--begin main content-->
-    <main id="apple" class="apple1">
-        <div class="timer">
-            <textarea readonly id="quiztimer" placeholder="100" aria-label="Seconds Left"></textarea>
-        </div>
-        <div id="attach" onload="buttonHandler()">
-
-        </div>
+    <main id="apple">
+        <section id="quiz-container" class="quiz-container hide">
+            <div id="timer" class="timer">
+                <textarea readonly id="quiztimer" placeholder="" aria-label="Seconds Left"></textarea>
+            </div>
+            <div>
+                <h2 id="question" class="question-style">Placeholder</h2>
+            </div>
+            <div id="quiz-buttons" class="button-container">
+                <button class="buttons">Placeholder</button>
+                <button class="buttons">Placeholder</button>
+                <button class="buttons">Placeholder</button>
+                <button class="buttons">Placeholder</button>
+            </div>
+        </section>
     </main>
     <!--end main content-->
     <!--footer-->
@@ -32,3 +40,4 @@
 <script src="./assets/javascript/logic.js"></script>
 </body>
 </html>
+

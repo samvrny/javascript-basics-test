@@ -27,7 +27,7 @@ main {
     height: 100%;
 }
 
-form {
+.quiz-container {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -35,11 +35,14 @@ form {
     margin: 10px;
 }
 
+.hide {
+    display: none;
+}
+
 #quiztimer {
     -webkit-appearance: none;
     -moz-appearance: none;
     appearance: none;
-    border: none;
     display: block;
     width: 100%;
     padding: 10px;
@@ -53,7 +56,7 @@ form {
     overflow: hidden;
 }
 
-.buttons {
+.buttons, .start-button {
     display: flex;
     flex-direction: column;
     outline: none;
@@ -65,7 +68,7 @@ form {
     border: 2px solid #0496ff;
 }
 
-.buttons:hover {
+.buttons:hover, .start-button:hover {
     border: 2px solid #03256c;
 }
 /*end main content styles*/

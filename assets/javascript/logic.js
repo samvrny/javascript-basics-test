@@ -1,35 +1,52 @@
 var form = document.querySelector("#apple");
-var attach = document.querySelector("#attach");
-// var question;
-// var questionButtons;
+var quizText = document.getElementById('quiz-container');
 var time;
 var timeRemaining = 15 // this is the global timer variable. It can be deducted from anywhere.
-//Initial screen when page loads up
 
+//Initial screen when page loads up
 var quizHeader = document.createElement("div");
-var quizButtons = document.createElement("div");
+var quizStartButton = document.createElement("div");
 
 quizHeader.innerHTML = "<h2 class = 'quiz-titles'>Click here to start the quiz!</h3>";
-quizButtons.innerHTML ="<button class = 'buttons'>Begin!</button>";
+quizStartButton.innerHTML ="<button class = 'start-button'>Begin!</button>";
 
 form.appendChild(quizHeader);
-form.appendChild(quizButtons);
+form.appendChild(quizStartButton);
 
 //Timer function THIS WORKS THANK GOD :)
 function quizTimer() {
-    console.log(timeRemaining);
+    console.log(timeRemaining); //consolelog
         time = setInterval( function() {
         if (timeRemaining > 0) {
              timeRemaining --;
         }
         else {
             clearInterval(time); //this stops the timer
-            highScorePage();
-        } console.log(timeRemaining);
+        } console.log(timeRemaining); //consolelog
         timeText = document.querySelector("#quiztimer");
         timeText.value = timeRemaining;
     }, 1000);
 };
+
+function startQuiz(event) {
+    console.log("started"); //consolelog
+    event.preventDefault();
+    quizTimer();
+    quizHeader.remove();
+    quizStartButton.remove();
+    quizText.classList.remove('hide');
+
+    if (timeRemaining < 0) {
+        endQuiz();
+    }
+};
+
+function endQuiz(event) {
+    event.preventDefault();
+    quizText.classList.add('hide');
+    endPage.classList.remove('hide');
+}
+
 
 var quizQuestions = [
     {
@@ -52,16 +69,7 @@ var quizQuestions = [
     }
 ];
 
-function buttonHandler(event) {
-    quizTimer();
-    event.preventDefault();
-    quizButtons.remove();
-    quizHeader.remove();
-
-
-};
-
-quizButtons.addEventListener("click", buttonHandler);
+quizStartButton.addEventListener("click", startQuiz);
 
 
 
