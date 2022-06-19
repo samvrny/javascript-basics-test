@@ -1,7 +1,9 @@
 var form = document.querySelector("#apple");
 var quizText = document.getElementById('quiz-container');
+var endForm = document.getElementById('end-form');
+var playAgain = document.getElementById('play-again');
 var time;
-var timeRemaining = 15 // this is the global timer variable. It can be deducted from anywhere.
+var timeRemaining; // this is the global timer variable. It can be added to/deducted from anywhere.
 
 //Initial screen when page loads up
 var quizHeader = document.createElement("div");
@@ -22,6 +24,7 @@ function quizTimer() {
         }
         else {
             clearInterval(time); //this stops the timer
+            endQuiz(); //this ends the quiz
         } console.log(timeRemaining); //consolelog
         timeText = document.querySelector("#quiztimer");
         timeText.value = timeRemaining;
@@ -31,20 +34,20 @@ function quizTimer() {
 function startQuiz(event) {
     console.log("started"); //consolelog
     event.preventDefault();
+    timeRemaining = 10; //this resets the clock every time the quiz is started
     quizTimer();
     quizHeader.remove();
     quizStartButton.remove();
     quizText.classList.remove('hide');
-
-    if (timeRemaining < 0) {
-        endQuiz();
-    }
+    endForm.classList.add('hide');
 };
 
-function endQuiz(event) {
-    event.preventDefault();
+function endQuiz() {
     quizText.classList.add('hide');
-    endPage.classList.remove('hide');
+    endForm.classList.remove('hide');
+
+    playAgain.addEventListener("click", startQuiz);
+
 }
 
 
