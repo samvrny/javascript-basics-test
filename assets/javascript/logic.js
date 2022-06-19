@@ -2,6 +2,7 @@ var form = document.querySelector("#apple");
 var quizContainerElement = document.getElementById('quiz-container');
 var endForm = document.getElementById('end-form');
 var playAgain = document.getElementById('play-again');
+var wrongRight = document.getElementById('wrong-or-right');
 var time; //this variable is needed to clock how fast the time is moving
 var timeRemaining; // this is the global timer variable. It can be added to/deducted from anywhere.
 
@@ -55,8 +56,8 @@ function startQuiz(event) {
 };
 
 function cueNextQuestion() {
-    resetForNextQuestion(); //this resets the buttons
-    printQuestion(quizQuestions[currentQuestionIndex]);
+        resetForNextQuestion(); //this resets the buttons
+        printQuestion(quizQuestions[currentQuestionIndex]);
 };
 
 function printQuestion(prompt) {
@@ -67,9 +68,24 @@ function printQuestion(prompt) {
         button.classList.add('buttons');
         //There needs to be more here. Will add later, corresponds to if the answer is correct or not and such.
         
-        button.addEventListener("click", highlightAnswer); //START FROM HERE. THIS BUTTON GOES NEXT/will cycle to the next question
+        button.addEventListener("click", displayAnswer); 
         theQuizAnswerButtons.appendChild(button);
     });
+};
+
+function displayAnswer() {  //NEEDS TO BE UPDATED TO REFLECT THE CORRECT/INCORRECT. Use an if/else statement to determine the inner HTML of this shnizzle.
+    var rightOrWrong = document.createElement("p")
+    rightOrWrong.innerText = "Hello World"
+    wrongRight.appendChild(rightOrWrong);
+
+    if (quizQuestions.length > currentQuestionIndex +1) {
+        currentQuestionIndex++;
+        cueNextQuestion();
+    }
+    else {
+        clearInterval(time);
+        endQuiz();
+    }
 };
 
 function resetForNextQuestion() {
