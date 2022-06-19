@@ -75,6 +75,8 @@ function printQuestion(prompt) {
 
 function displayAnswer() {  //NEEDS TO BE UPDATED TO REFLECT THE CORRECT/INCORRECT. Use an if/else statement to determine the inner HTML of this shnizzle.
     var rightOrWrong = document.createElement("p")
+
+
     rightOrWrong.innerText = "Hello World"
     wrongRight.appendChild(rightOrWrong);
 
@@ -93,12 +95,6 @@ function resetForNextQuestion() {
         theQuizAnswerButtons.removeChild(theQuizAnswerButtons.firstChild); //this will loop through and remove each of the children until none remain.
     }
 };
-
-// function highlightAnswer (e) {
-//     var selectedButton = e.target;
-//     var correct = selectedButton.dataset.correct;
-// }
-
 
 //AFTER THIS IS ALL MY DOING
 function endQuiz() {
