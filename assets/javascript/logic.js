@@ -42,7 +42,7 @@ function quizTimer() {
 function startQuiz(event) {
     console.log("started"); //consolelog
     event.preventDefault();
-    timeRemaining = 10; //this resets the clock every time the quiz is started by clocking the begin or the play again button
+    timeRemaining = 100; //this resets the clock every time the quiz is started by clocking the begin or the play again button
     quizTimer();
     quizHeader.remove();
     quizStartButton.remove(); // this and the line right before it remove the begin button and header
@@ -58,8 +58,15 @@ function cueNextQuestion() {
 };
 
 function printQuestion(prompt) {
-    questionHeader.innerText = prompt.prompt
-}
+    questionHeader.innerText = prompt.prompt;
+    prompt.answers.forEach(answer => {   //for each is going through each item in the array
+        var button = document.createElement("button"); //this is creating a new button for the questions
+        button.innerText = answer.text;
+        button.classList.add('buttons');
+        //There needs to be more here. Will add later, corresponds to if the answer is correct or not and such.
+        theQuizAnswerButtons.appendChild(button);
+    });
+};
 
 
 
