@@ -10,6 +10,7 @@ var timeRemaining; // this is the global timer variable. It can be added to/dedu
 var questionHeader = document.getElementById('question'); //this is the h2 that will be filled with questions
 var theQuizAnswerButtons = document.getElementById('quiz-buttons'); // this is the container with the quiz's buttons that will be filled with the answeres
 var quizQuestions, currentQuestionIndex;
+//var button;
 //END THE WORKING ON PRINTING SPACE
 
 
@@ -42,18 +43,19 @@ function quizTimer() {
 function startQuiz(event) {
     console.log("started"); //consolelog
     event.preventDefault();
-    timeRemaining = 100; //this resets the clock every time the quiz is started by clocking the begin or the play again button
+    timeRemaining = 15; //this resets the clock every time the quiz is started by clocking the begin or the play again button
     quizTimer();
     quizHeader.remove();
     quizStartButton.remove(); // this and the line right before it remove the begin button and header
     quizQuestions = quizQuestionsArray; //these correspond to the global variables at the top, and to the questions array
-    currentQuestionIndex = 0
+    currentQuestionIndex = 0 //if you change this number, a different item in the quizQuestionsArray pops up
     quizContainerElement.classList.remove('hide'); // this unhides the buttons for the quiz
     endForm.classList.add('hide');
     cueNextQuestion();
 };
 
 function cueNextQuestion() {
+    resetForNextQuestion(); //this resets the buttons
     printQuestion(quizQuestions[currentQuestionIndex]);
 };
 
@@ -64,10 +66,22 @@ function printQuestion(prompt) {
         button.innerText = answer.text;
         button.classList.add('buttons');
         //There needs to be more here. Will add later, corresponds to if the answer is correct or not and such.
+        
+        button.addEventListener("click", highlightAnswer); //START FROM HERE. THIS BUTTON GOES NEXT/will cycle to the next question
         theQuizAnswerButtons.appendChild(button);
     });
 };
 
+function resetForNextQuestion() {
+    while (theQuizAnswerButtons.firstChild) { //This is saying WHILE theQuizAnswerButtons element has a child element...
+        theQuizAnswerButtons.removeChild(theQuizAnswerButtons.firstChild); //this will loop through and remove each of the children until none remain.
+    }
+};
+
+// function highlightAnswer (e) {
+//     var selectedButton = e.target;
+//     var correct = selectedButton.dataset.correct;
+// }
 
 
 //AFTER THIS IS ALL MY DOING
@@ -75,7 +89,7 @@ function endQuiz() {
     quizContainerElement.classList.add('hide');
     endForm.classList.remove('hide');
 
-    playAgain.addEventListener("click", startQuiz); //this restarts the game
+    playAgain.addEventListener("click", startQuiz); //this restarts the game.
 };
 
 
