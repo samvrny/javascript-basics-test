@@ -11,13 +11,15 @@ var timeRemaining; // this is the global timer variable. It can be added to/dedu
 var questionHeader = document.getElementById('question'); //this is the h2 that will be filled with questions
 var theQuizAnswerButtons = document.getElementById('quiz-buttons'); // this is the container with the quiz's buttons that will be filled with the answeres
 var quizQuestions, currentQuestionIndex;
-//var button;
+var submit = document.getElementById('submit'); //FROM TODAY 6.20.22
+var initials = document.getElementById('name-initials');
 //END THE WORKING ON PRINTING SPACE
 
 
 //Initial screen when page loads up
 var quizHeader = document.createElement("div");
 var quizStartButton = document.createElement("div");
+var rightOrWrong = document.createElement("p")
 
 quizHeader.innerHTML = "<h2 class = 'quiz-titles'>Click here to start the quiz!</h3>";
 quizStartButton.innerHTML ="<button class = 'start-button'>Begin!</button>";
@@ -44,7 +46,8 @@ function quizTimer() {
 function startQuiz(event) {
     console.log("started"); //consolelog
     event.preventDefault();
-    timeRemaining = 15; //this resets the clock every time the quiz is started by clocking the begin or the play again button
+    rightOrWrong.innerHTML = "";
+    timeRemaining = 60; //this resets the clock every time the quiz is started by clocking the begin or the play again button
     quizTimer();
     quizHeader.remove();
     quizStartButton.remove(); // this and the line right before it remove the begin button and header
@@ -66,19 +69,27 @@ function printQuestion(prompt) {
         var button = document.createElement("button"); //this is creating a new button for the questions
         button.innerText = answer.text;
         button.classList.add('buttons');
-        //There needs to be more here. Will add later, corresponds to if the answer is correct or not and such.
-        
-        button.addEventListener("click", displayAnswer); 
+        button.dataset.answer = answer.correct; // converts the boolean to a string
+        button.addEventListener("click", displayAnswer); //THIS IS WHERE the event listener for the display answer is. A starting point.
         theQuizAnswerButtons.appendChild(button);
     });
 };
 
-function displayAnswer() {  //NEEDS TO BE UPDATED TO REFLECT THE CORRECT/INCORRECT. Use an if/else statement to determine the inner HTML of this shnizzle.
-    var rightOrWrong = document.createElement("p")
+function displayAnswer(event) {  //NEEDS TO BE UPDATED TO REFLECT THE CORRECT/INCORRECT. Use an if/else statement to determine the inner HTML of this shnizzle.
+    var answer = event.target.attributes[1].value; // console log this to look at the object later for extra guidance
+    console.log(answer); // console.log
+    rightOrWrong.innerHtml = "";// This may be needed to empty out this text before displaying the next
 
-
-    rightOrWrong.innerText = "Hello World"
+    if (answer === "true") {
+        rightOrWrong.innerText = "Correct!";
+    }
+    else {
+        rightOrWrong.innerText = "Incorrect!";
+        timeRemaining = timeRemaining - 5;
+    }
+    
     wrongRight.appendChild(rightOrWrong);
+    
 
     if (quizQuestions.length > currentQuestionIndex +1) {
         currentQuestionIndex++;
@@ -104,6 +115,20 @@ function endQuiz() {
     playAgain.addEventListener("click", startQuiz); //this restarts the game.
 };
 
+function saveHighscore(event) {
+    event.preventDefault();
+    var newScore = {
+        initials: initials.value,
+        score: timeRemaining
+    } 
+    var highScores = JSON.parse(localStorage.getItem("highScore")); //FOR LATER: get item, parse it, etc for displaying the highscore.
+    if (highScores === null) {
+        highScores = [];
+    }
+    highScores.push(newScore);
+    localStorage.setItem("highScore", JSON.stringify(highScores));
+    console.log(newScore);
+}
 
 var quizQuestionsArray = [
     {
@@ -113,7 +138,7 @@ var quizQuestionsArray = [
             { text: 'Dont Onload Morse', correct: false},
             { text: 'Document Object Model', correct: true},
             { text: 'Download Orient Material', correct: false}
-        ]
+        ],
     },
     {
         prompt: 'What does DRY stand for?',
@@ -126,4 +151,5 @@ var quizQuestionsArray = [
     }
 ];
 
+submit.addEventListener("click", saveHighscore);
 quizStartButton.addEventListener("click", startQuiz);

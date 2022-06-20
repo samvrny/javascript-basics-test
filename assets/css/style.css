@@ -56,6 +56,12 @@ main {
     overflow: hidden;
 }
 
+.answer {
+    font-size: 20px;
+    font-style: italic;
+    border-bottom: 2px dashed #fed766;
+}
+
 .buttons, .start-button {
     display: flex;
     flex-direction: column;
@@ -65,11 +71,20 @@ main {
     margin: 10px;
     background: #f865b0;
     border-radius: 10px;
-    border: 2px solid #0496ff;
+    border: 3px solid #0496ff;
+    font-size: 20px;
 }
 
 .buttons:hover, .start-button:hover {
-    border: 2px solid #03256c;
+    border: 3px solid #03256c;
+}
+
+.highscore {
+    display: flex;
+    flex-direction: column;
+    border: 4px solid #0496ff;
+    align-items: center;
+    justify-content: center;
 }
 /*end main content styles*/
 
