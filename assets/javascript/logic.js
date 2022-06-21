@@ -13,7 +13,9 @@ var theQuizAnswerButtons = document.getElementById('quiz-buttons'); // this is t
 var quizQuestions, currentQuestionIndex;
 var submit = document.getElementById('submit'); 
 var initials = document.getElementById('name-initials');
-
+var highScores;
+var heresTheList = document.getElementById('heres-the-list');
+var thingy;
 
 //Initial screen when page loads up
 var quizHeader = document.createElement("div");
@@ -56,6 +58,9 @@ function startQuiz(event) {
     quizContainerElement.classList.remove('hide'); // this unhides the buttons for the quiz
     endForm.classList.add('hide');
     veiwTheHighScoresPage.classList.add('hide');
+    while (heresTheList.firstChild) {
+        heresTheList.removeChild(heresTheList.firstChild);
+    }
     cueNextQuestion();
 };
 
@@ -119,9 +124,6 @@ function endQuiz() {
 
     playAgain.addEventListener("click", startQuiz); //this restarts the game.
 };
-// STARTING HERE
-var highScores;
-var heresTheList = document.getElementById('heres-the-list');
 
 //This function saves the highscore to local storage
 function saveHighscore(event) { // This is certainly the most confusing aspect of the quiz. Tutor helped here but I'd have trouble explaining what everything is
@@ -139,8 +141,7 @@ function saveHighscore(event) { // This is certainly the most confusing aspect o
     console.log(newScore);
 };
 
-
-//WORK ON LATER
+//This function displays the highscores
 function highScoresPage(event) {
     event.preventDefault();
     endForm.classList.add('hide');
@@ -150,7 +151,7 @@ function highScoresPage(event) {
 
     console.log(highScores, typeof highScores);
     highScores.forEach(thing => {
-        var thingy = document.createElement("li");
+        thingy = document.createElement("li");
         thingy.innerText = thing.initials + ":" + thing.score;
         heresTheList.appendChild(thingy);
         console.log(thingy);
