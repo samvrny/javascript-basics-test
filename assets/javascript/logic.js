@@ -5,17 +5,17 @@ var playAgain = document.getElementById('play-again');
 var playAgainAgain = document.getElementById('play-again-again');
 var highScoresButton = document.getElementById('view-highscore');
 var wrongRight = document.getElementById('wrong-or-right');
-var time; //this variable is needed to clock how fast the time is moving
-var timeRemaining; // this is the global timer variable. It can be added to/deducted from anywhere.
+var time; 
+var timeRemaining; 
 var veiwTheHighScoresPage = document.getElementById('highscore-page');
-var questionHeader = document.getElementById('question'); //this is the h2 that will be filled with questions
-var theQuizAnswerButtons = document.getElementById('quiz-buttons'); // this is the container with the quiz's buttons that will be filled with the answeres
+var questionHeader = document.getElementById('question'); 
+var theQuizAnswerButtons = document.getElementById('quiz-buttons'); 
 var quizQuestions, currentQuestionIndex;
 var submit = document.getElementById('submit'); 
 var initials = document.getElementById('name-initials');
 var highScores;
 var heresTheList = document.getElementById('heres-the-list');
-var thingy;
+var score;
 
 //Initial screen when page loads up
 var quizHeader = document.createElement("div");
@@ -30,15 +30,14 @@ form.appendChild(quizStartButton);
 
 //Timer function for the quiz
 function quizTimer() {
-    console.log(timeRemaining); //consolelog
         time = setInterval( function() {
         if (timeRemaining > 0) {
              timeRemaining --;
         }
         else {
-            clearInterval(time); //this stops the timer
-            endQuiz(); //this ends the quiz
-        } console.log(timeRemaining); //consolelog
+            clearInterval(time); 
+            endQuiz(); 
+        } 
         timeText = document.querySelector("#quiztimer");
         timeText.value = timeRemaining;
     }, 1000);
@@ -46,16 +45,15 @@ function quizTimer() {
 
 //This function starts the quiz
 function startQuiz(event) {
-    console.log("started"); //consolelog
     event.preventDefault();
     rightOrWrong.innerHTML = "";
-    timeRemaining = 60; //this resets the clock every time the quiz is started by clocking the begin or the play again button
+    timeRemaining = 45; 
     quizTimer();
     quizHeader.remove();
-    quizStartButton.remove(); // this and the line right before it remove the begin button and header
-    quizQuestions = quizQuestionsArray; //these correspond to the global variables at the top, and to the questions array
-    currentQuestionIndex = 0 //if you change this number, a different item in the quizQuestionsArray pops up
-    quizContainerElement.classList.remove('hide'); // this unhides the buttons for the quiz
+    quizStartButton.remove(); 
+    quizQuestions = quizQuestionsArray; 
+    currentQuestionIndex = 0 
+    quizContainerElement.classList.remove('hide'); 
     endForm.classList.add('hide');
     veiwTheHighScoresPage.classList.add('hide');
     while (heresTheList.firstChild) {
@@ -73,21 +71,21 @@ function cueNextQuestion() {
 //This function prints the current question in the index to the page
 function printQuestion(prompt) {
     questionHeader.innerText = prompt.prompt;
-    prompt.answers.forEach(answer => {   //for each is going through each item in the array
-        var button = document.createElement("button"); //this is creating a new button for the questions
+    prompt.answers.forEach(answer => {  
+        var button = document.createElement("button"); 
         button.innerText = answer.text;
         button.classList.add('buttons');
-        button.dataset.answer = answer.correct; // converts the boolean to a string
-        button.addEventListener("click", displayAnswer); //THIS IS WHERE the event listener for the display answer is. A starting point.
+        button.dataset.answer = answer.correct; 
+        button.addEventListener("click", displayAnswer); 
         theQuizAnswerButtons.appendChild(button);
     });
 };
 
 //This function displays whether the question was answered correctly on the page
-function displayAnswer(event) {  //NEEDS TO BE UPDATED TO REFLECT THE CORRECT/INCORRECT. Use an if/else statement to determine the inner HTML of this shnizzle.
-    var answer = event.target.attributes[1].value; // console log this to look at the object later for extra guidance
-    console.log(answer); // console.log
-    rightOrWrong.innerHtml = "";// This may be needed to empty out this text before displaying the next
+function displayAnswer(event) { 
+    var answer = event.target.attributes[1].value; 
+    console.log(answer);
+    rightOrWrong.innerHtml = "";
 
     if (answer === "true") {
         rightOrWrong.innerText = "Correct!";
@@ -112,8 +110,8 @@ function displayAnswer(event) {  //NEEDS TO BE UPDATED TO REFLECT THE CORRECT/IN
 
 //This function is what removes the old questions to prepare for the next set to be printed
 function resetForNextQuestion() {
-    while (theQuizAnswerButtons.firstChild) { //This is saying WHILE theQuizAnswerButtons element has a child element...
-        theQuizAnswerButtons.removeChild(theQuizAnswerButtons.firstChild); //this will loop through and remove each of the children until none remain.
+    while (theQuizAnswerButtons.firstChild) { 
+        theQuizAnswerButtons.removeChild(theQuizAnswerButtons.firstChild); 
     }
 };
 
@@ -122,23 +120,22 @@ function endQuiz() {
     quizContainerElement.classList.add('hide');
     endForm.classList.remove('hide');
 
-    playAgain.addEventListener("click", startQuiz); //this restarts the game.
+    playAgain.addEventListener("click", startQuiz); 
 };
 
 //This function saves the highscore to local storage
-function saveHighscore(event) { // This is certainly the most confusing aspect of the quiz. Tutor helped here but I'd have trouble explaining what everything is
+function saveHighscore(event) { 
     event.preventDefault();
     var newScore = {
         initials: initials.value,
         score: timeRemaining
     } 
-    highScores = JSON.parse(localStorage.getItem("highScore")); //FOR LATER: get item, parse it, etc for displaying the highscore.
+    highScores = JSON.parse(localStorage.getItem("highScore"));
     if (highScores === null) {
         highScores = [];
     }
     highScores.push(newScore);
     localStorage.setItem("highScore", JSON.stringify(highScores));
-    console.log(newScore);
 };
 
 //This function displays the highscores
@@ -148,18 +145,16 @@ function highScoresPage(event) {
     veiwTheHighScoresPage.classList.remove('hide');
     highScores = JSON.parse(localStorage.getItem("highScore"));
     
-
-    console.log(highScores, typeof highScores);
     highScores.forEach(thing => {
-        thingy = document.createElement("li");
-        thingy.innerText = thing.initials + ":" + thing.score;
-        heresTheList.appendChild(thingy);
-        console.log(thingy);
+        score = document.createElement("li");
+        score.innerText = "Name: " + thing.initials + ".  Score: " + thing.score;
+        heresTheList.appendChild(score);
     });
     
     playAgainAgain.addEventListener("click", startQuiz);
 };
 
+//This is the array with all the quiz questions in it
 var quizQuestionsArray = [
     {
         prompt: 'What does DOM stand for?',
