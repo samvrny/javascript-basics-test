@@ -26,7 +26,7 @@ quizStartButton.innerHTML ="<button class = 'start-button'>Begin!</button>";
 form.appendChild(quizHeader);
 form.appendChild(quizStartButton);
 
-//Timer function THIS WORKS THANK GOD :)
+//Timer function for the quiz
 function quizTimer() {
     console.log(timeRemaining); //consolelog
         time = setInterval( function() {
@@ -42,6 +42,7 @@ function quizTimer() {
     }, 1000);
 };
 
+//This function starts the quiz
 function startQuiz(event) {
     console.log("started"); //consolelog
     event.preventDefault();
@@ -58,11 +59,13 @@ function startQuiz(event) {
     cueNextQuestion();
 };
 
+//This calls to remove the old questions and gets the next one ready to be printed
 function cueNextQuestion() {
         resetForNextQuestion(); //this resets the buttons
         printQuestion(quizQuestions[currentQuestionIndex]);
 };
 
+//This function prints the current question in the index to the page
 function printQuestion(prompt) {
     questionHeader.innerText = prompt.prompt;
     prompt.answers.forEach(answer => {   //for each is going through each item in the array
@@ -75,6 +78,7 @@ function printQuestion(prompt) {
     });
 };
 
+//This function displays whether the question was answered correctly on the page
 function displayAnswer(event) {  //NEEDS TO BE UPDATED TO REFLECT THE CORRECT/INCORRECT. Use an if/else statement to determine the inner HTML of this shnizzle.
     var answer = event.target.attributes[1].value; // console log this to look at the object later for extra guidance
     console.log(answer); // console.log
@@ -101,27 +105,32 @@ function displayAnswer(event) {  //NEEDS TO BE UPDATED TO REFLECT THE CORRECT/IN
     }
 };
 
+//This function is what removes the old questions to prepare for the next set to be printed
 function resetForNextQuestion() {
     while (theQuizAnswerButtons.firstChild) { //This is saying WHILE theQuizAnswerButtons element has a child element...
         theQuizAnswerButtons.removeChild(theQuizAnswerButtons.firstChild); //this will loop through and remove each of the children until none remain.
     }
 };
 
-//AFTER THIS IS ALL MY DOING
+//This function ends the quiz and stops the timer
 function endQuiz() {
     quizContainerElement.classList.add('hide');
     endForm.classList.remove('hide');
 
     playAgain.addEventListener("click", startQuiz); //this restarts the game.
 };
+// STARTING HERE
+var highScores;
+var heresTheList = document.getElementById('heres-the-list');
 
+//This function saves the highscore to local storage
 function saveHighscore(event) { // This is certainly the most confusing aspect of the quiz. Tutor helped here but I'd have trouble explaining what everything is
     event.preventDefault();
     var newScore = {
         initials: initials.value,
         score: timeRemaining
     } 
-    var highScores = JSON.parse(localStorage.getItem("highScore")); //FOR LATER: get item, parse it, etc for displaying the highscore.
+    highScores = JSON.parse(localStorage.getItem("highScore")); //FOR LATER: get item, parse it, etc for displaying the highscore.
     if (highScores === null) {
         highScores = [];
     }
@@ -130,10 +139,23 @@ function saveHighscore(event) { // This is certainly the most confusing aspect o
     console.log(newScore);
 };
 
+
+//WORK ON LATER
 function highScoresPage(event) {
     event.preventDefault();
     endForm.classList.add('hide');
     veiwTheHighScoresPage.classList.remove('hide');
+    highScores = JSON.parse(localStorage.getItem("highScore"));
+    
+
+    console.log(highScores, typeof highScores);
+    highScores.forEach(thing => {
+        var thingy = document.createElement("li");
+        thingy.innerText = thing.initials + ":" + thing.score;
+        heresTheList.appendChild(thingy);
+        console.log(thingy);
+    });
+    
     playAgainAgain.addEventListener("click", startQuiz);
 };
 
@@ -204,8 +226,6 @@ var quizQuestionsArray = [
 ];
 
 //Event listeners for the Begin button, Veiw highscores button, and submit (highscores) button
-
 highScoresButton.addEventListener("click", highScoresPage);
 submit.addEventListener("click", saveHighscore);
 quizStartButton.addEventListener("click", startQuiz);
-//playAgain.addEventListener("click", startQuiz); 
