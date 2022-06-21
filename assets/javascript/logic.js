@@ -143,6 +143,9 @@ function highScoresPage(event) {
     event.preventDefault();
     endForm.classList.add('hide');
     veiwTheHighScoresPage.classList.remove('hide');
+
+    playAgainAgain.addEventListener("click", startQuiz);
+
     highScores = JSON.parse(localStorage.getItem("highScore"));
     
     highScores.forEach(thing => {
@@ -150,8 +153,6 @@ function highScoresPage(event) {
         score.innerText = "Name: " + thing.initials + ".  Score: " + thing.score;
         heresTheList.appendChild(score);
     });
-    
-    playAgainAgain.addEventListener("click", startQuiz);
 };
 
 //This is the array with all the quiz questions in it
@@ -224,4 +225,5 @@ var quizQuestionsArray = [
 //Event listeners for the Begin button, Veiw highscores button, and submit (highscores) button
 highScoresButton.addEventListener("click", highScoresPage);
 submit.addEventListener("click", saveHighscore);
+playAgainAgain.addEventListener("click,", startQuiz)
 quizStartButton.addEventListener("click", startQuiz);
