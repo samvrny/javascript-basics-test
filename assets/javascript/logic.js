@@ -2,18 +2,17 @@ var form = document.querySelector("#apple");
 var quizContainerElement = document.getElementById('quiz-container');
 var endForm = document.getElementById('end-form');
 var playAgain = document.getElementById('play-again');
+var playAgainAgain = document.getElementById('play-again-again');
+var highScoresButton = document.getElementById('view-highscore');
 var wrongRight = document.getElementById('wrong-or-right');
 var time; //this variable is needed to clock how fast the time is moving
 var timeRemaining; // this is the global timer variable. It can be added to/deducted from anywhere.
-
-
-//THIS IS THE SPACE FOR WORKING ON PRINTING
+var veiwTheHighScoresPage = document.getElementById('highscore-page');
 var questionHeader = document.getElementById('question'); //this is the h2 that will be filled with questions
 var theQuizAnswerButtons = document.getElementById('quiz-buttons'); // this is the container with the quiz's buttons that will be filled with the answeres
 var quizQuestions, currentQuestionIndex;
-var submit = document.getElementById('submit'); //FROM TODAY 6.20.22
+var submit = document.getElementById('submit'); 
 var initials = document.getElementById('name-initials');
-//END THE WORKING ON PRINTING SPACE
 
 
 //Initial screen when page loads up
@@ -55,6 +54,7 @@ function startQuiz(event) {
     currentQuestionIndex = 0 //if you change this number, a different item in the quizQuestionsArray pops up
     quizContainerElement.classList.remove('hide'); // this unhides the buttons for the quiz
     endForm.classList.add('hide');
+    veiwTheHighScoresPage.classList.add('hide');
     cueNextQuestion();
 };
 
@@ -128,7 +128,14 @@ function saveHighscore(event) { // This is certainly the most confusing aspect o
     highScores.push(newScore);
     localStorage.setItem("highScore", JSON.stringify(highScores));
     console.log(newScore);
-}
+};
+
+function highScoresPage(event) {
+    event.preventDefault();
+    endForm.classList.add('hide');
+    veiwTheHighScoresPage.classList.remove('hide');
+    playAgainAgain.addEventListener("click", startQuiz);
+};
 
 var quizQuestionsArray = [
     {
@@ -196,5 +203,9 @@ var quizQuestionsArray = [
     }
 ];
 
+//Event listeners for the Begin button, Veiw highscores button, and submit (highscores) button
+
+highScoresButton.addEventListener("click", highScoresPage);
 submit.addEventListener("click", saveHighscore);
 quizStartButton.addEventListener("click", startQuiz);
+//playAgain.addEventListener("click", startQuiz); 
