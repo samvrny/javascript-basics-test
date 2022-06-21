@@ -1,4 +1,4 @@
-var form = document.querySelector("#apple");
+var form = document.querySelector("#main-content");
 var quizContainerElement = document.getElementById('quiz-container');
 var endForm = document.getElementById('end-form');
 var playAgain = document.getElementById('play-again');
