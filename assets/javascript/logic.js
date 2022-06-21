@@ -115,7 +115,7 @@ function endQuiz() {
     playAgain.addEventListener("click", startQuiz); //this restarts the game.
 };
 
-function saveHighscore(event) {
+function saveHighscore(event) { // This is certainly the most confusing aspect of the quiz. Tutor helped here but I'd have trouble explaining what everything is
     event.preventDefault();
     var newScore = {
         initials: initials.value,
@@ -147,6 +147,51 @@ var quizQuestionsArray = [
             { text: 'Do Repeat Yourself', correct: false},
             { text: 'Doesnt Really Yosemite', correct: false},
             { text: 'Deranged Refreshment Yarp', correct: false}
+        ],
+    },
+    {
+        prompt: 'What does API stand for?',
+        answers: [
+            { text: 'Acupuncture Polaroid Index', correct: false},
+            { text: 'Application Programming Interface', correct: true},
+            { text: 'Apple Piece Iteration', correct: false},
+            { text: 'Application Program Interweb', correct: false}
+        ],
+    },
+    {
+        prompt: 'Is JavaScript an important language?',
+        answers: [
+            { text: 'Its not important', correct: false},
+            { text: 'About 12% of apps use it', correct: false},
+            { text: 'Its a coffee shop POS system', correct: false},
+            { text: 'Its the most used programming language', correct: true}
+        ],
+    },
+    {
+        prompt: 'It is possible to ______ create HTML elements with Javascript',
+        answers: [
+            { text: 'Computerally', correct: false},
+            { text: 'Dynamically', correct: true},
+            { text: 'Impossibly', correct: false},
+            { text: 'Mathmatically', correct: false}
+        ],
+    },
+    {
+        prompt: 'Is JavaScript the same as Java?',
+        answers: [
+            { text: '   Yes   ', correct: false},
+            { text: '   No   ', correct: true},
+            { text: ' Maybe ', correct: false},
+            { text: '   So   ', correct: false}
+        ],
+    },
+    {
+        prompt: 'How can you tell the webpage to listen for events, like a click, with JavaScript?',
+        answers: [
+            { text: 'localStorage', correct: false},
+            { text: 'addEventListener', correct: true},
+            { text: 'preventDefault', correct: false},
+            { text: 'clearInterval', correct: false}
         ]
     }
 ];
