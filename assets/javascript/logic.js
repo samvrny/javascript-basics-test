@@ -16,17 +16,16 @@ var initials = document.getElementById('name-initials');
 var highScores;
 var heresTheList = document.getElementById('heres-the-list');
 var score;
+var totalScore;
 //HOW TO:
-//Change start quiz button to start quiz
 //Add a submitted form everytime submit is clicked
-//add a score. Create a global variable for it that's empty, and it's functionality can be basically like timeRemainings. Substitute score for timeRemaining in the score. This all should achieve the 100% mark for the quiz!
 //Initial screen when page loads up
 var quizHeader = document.createElement("div");
 var quizStartButton = document.createElement("div");
 var rightOrWrong = document.createElement("p")
 
 quizHeader.innerHTML = "<h2 class = 'quiz-titles'>Click here to start the quiz!</h3>";
-quizStartButton.innerHTML ="<button class = 'start-button'>Begin!</button>";
+quizStartButton.innerHTML ="<button class = 'start-button'>Start Quiz!</button>";
 
 form.appendChild(quizHeader);
 form.appendChild(quizStartButton);
@@ -51,6 +50,7 @@ function startQuiz(event) {
     event.preventDefault();
     rightOrWrong.innerHTML = "";
     timeRemaining = 45; 
+    totalScore = 0;
     quizTimer();
     quizHeader.remove();
     quizStartButton.remove(); 
@@ -91,7 +91,8 @@ function displayAnswer(event) {
     rightOrWrong.innerHtml = "";
 
     if (answer === "true") {
-        rightOrWrong.innerText = "Correct!";
+        rightOrWrong.innerText = "Correct! +5 points";
+        totalScore = totalScore + 5;
     }
     else {
         rightOrWrong.innerText = "Incorrect!";
@@ -129,9 +130,11 @@ function endQuiz() {
 //This function saves the highscore to local storage
 function saveHighscore(event) { 
     event.preventDefault();
+
+    //HERE I AM
     var newScore = {
         initials: initials.value,
-        score: timeRemaining
+        score: totalScore
     } 
     highScores = JSON.parse(localStorage.getItem("highScore"));
     if (highScores === null) {
