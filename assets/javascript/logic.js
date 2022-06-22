@@ -16,7 +16,10 @@ var initials = document.getElementById('name-initials');
 var highScores;
 var heresTheList = document.getElementById('heres-the-list');
 var score;
-
+//HOW TO:
+//Change start quiz button to start quiz
+//Add a submitted form everytime submit is clicked
+//add a score. Create a global variable for it that's empty, and it's functionality can be basically like timeRemainings. Substitute score for timeRemaining in the score. This all should achieve the 100% mark for the quiz!
 //Initial screen when page loads up
 var quizHeader = document.createElement("div");
 var quizStartButton = document.createElement("div");
