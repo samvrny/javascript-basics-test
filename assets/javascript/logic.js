@@ -17,8 +17,8 @@ var highScores;
 var heresTheList = document.getElementById('heres-the-list');
 var score;
 var totalScore;
-//HOW TO:
-//Add a submitted form everytime submit is clicked
+var submitScore = document.getElementById('submit-score');
+
 //Initial screen when page loads up
 var quizHeader = document.createElement("div");
 var quizStartButton = document.createElement("div");
@@ -53,7 +53,8 @@ function startQuiz(event) {
     totalScore = 0;
     quizTimer();
     quizHeader.remove();
-    quizStartButton.remove(); 
+    quizStartButton.remove();
+    submitScore.classList.add('hide');
     quizQuestions = quizQuestionsArray; 
     currentQuestionIndex = 0 
     quizContainerElement.classList.remove('hide'); 
@@ -131,7 +132,8 @@ function endQuiz() {
 function saveHighscore(event) { 
     event.preventDefault();
 
-    //HERE I AM
+    submitScore.classList.remove('hide');
+
     var newScore = {
         initials: initials.value,
         score: totalScore
