@@ -166,68 +166,248 @@ function highScoresPage(event) {
 //This is the array with all the quiz questions in it
 var quizQuestionsArray = [
     {
-        prompt: 'What does DOM stand for?',
+        prompt: 'In what year did the First World War break out?',
         answers: [
-            { text: 'Domino Onion Martha', correct: false},
-            { text: 'Dont Onload Morse', correct: false},
-            { text: 'Document Object Model', correct: true},
-            { text: 'Download Orient Material', correct: false}
+            { text: '1893', correct: false},
+            { text: '1934', correct: false},
+            { text: '1914', correct: true},
+            { text: '1906', correct: false}
         ],
     },
     {
-        prompt: 'What does DRY stand for?',
+        prompt: 'Who was the first country to use chemical gas as a weapon?',
         answers: [
-            { text: 'Dont Repeat Yourself', correct: true},
-            { text: 'Do Repeat Yourself', correct: false},
-            { text: 'Doesnt Really Yosemite', correct: false},
-            { text: 'Deranged Refreshment Yarp', correct: false}
+            { text: 'Germany', correct: true},
+            { text: 'France', correct: false},
+            { text: 'Ottoman Empire', correct: false},
+            { text: 'Russian Empire', correct: false}
         ],
     },
     {
-        prompt: 'What does API stand for?',
+        prompt: 'What was the country the Germans decided to use as a roadway for their advancing armies during their execution of the Schlieffen plan?',
         answers: [
-            { text: 'Acupuncture Polaroid Index', correct: false},
-            { text: 'Application Programming Interface', correct: true},
-            { text: 'Apple Piece Iteration', correct: false},
-            { text: 'Application Program Interweb', correct: false}
+            { text: 'Netherlands', correct: false},
+            { text: 'Belgium', correct: true},
+            { text: 'Switzerland', correct: false},
+            { text: 'Italy', correct: false}
         ],
     },
     {
-        prompt: 'Is JavaScript an important language?',
+        prompt: 'What was the famous morale boosting phrase the French general Charles Petain coined during the horrible battle of Verdun?',
         answers: [
-            { text: 'Its not important', correct: false},
-            { text: 'About 12% of apps use it', correct: false},
-            { text: 'Its a coffee shop POS system', correct: false},
-            { text: 'Its the most used programming language', correct: true}
+            { text: 'For honor, for country, for glory!', correct: false},
+            { text: 'For honor, for the Republic!', correct: false},
+            { text: 'Fight them to the river!', correct: false},
+            { text: 'They shall not pass!', correct: true}
         ],
     },
     {
-        prompt: 'It is possible to ______ create HTML elements with Javascript',
+        prompt: 'What was the name of the famous passenger ship that, when sunk by a German U-boat, killed the 128 American passengers on board?',
         answers: [
-            { text: 'Computerally', correct: false},
-            { text: 'Dynamically', correct: true},
-            { text: 'Impossibly', correct: false},
-            { text: 'Mathmatically', correct: false}
+            { text: 'Hindenburg', correct: false},
+            { text: 'Lusitania', correct: true},
+            { text: 'Endeavour', correct: false},
+            { text: 'Queen Mary', correct: false}
         ],
     },
     {
-        prompt: 'Is JavaScript the same as Java?',
+        prompt: 'Which German general walked up to the door of the citidel of Liege and pounded on the door with his hilt demanding, and recieving, the surrender of the city?',
         answers: [
-            { text: '   Yes   ', correct: false},
-            { text: '   No   ', correct: true},
-            { text: ' Maybe ', correct: false},
-            { text: '   So   ', correct: false}
+            { text: 'Alexander Von Kluck', correct: false},
+            { text: 'Erich Ludendorf', correct: true},
+            { text: 'Helmuth Von Moltke', correct: false},
+            { text: 'Otto Von Bismarck', correct: false}
         ],
     },
     {
-        prompt: 'How can you tell the webpage to listen for events, like a click, with JavaScript?',
+        prompt: 'Which was the first power to deploy tanks to the battlefield?',
         answers: [
-            { text: 'localStorage', correct: false},
-            { text: 'addEventListener', correct: true},
-            { text: 'preventDefault', correct: false},
-            { text: 'clearInterval', correct: false}
+            { text: 'Austria-Hungary', correct: false},
+            { text: 'Britain', correct: true},
+            { text: 'Germany', correct: false},
+            { text: 'Italy', correct: false}
         ]
-    }
+    },
+    {
+        prompt: 'What is the name of the highest ranking French general during the onset of the war?',
+        answers: [
+            { text: 'Charles De Gaulle', correct: ''},
+            { text: 'Jean Moreau', correct: ''},
+            { text: 'Joseph Joffre', correct: ''},
+            { text: 'Claude Blanchet', correct: ''}
+        ],
+    },
+    {
+        prompt: '',
+        answers: [
+            { text: '', correct: ''},
+            { text: '', correct: ''},
+            { text: '', correct: ''},
+            { text: '', correct: ''}
+        ],
+    },
+    {
+        prompt: '',
+        answers: [
+            { text: '', correct: ''},
+            { text: '', correct: ''},
+            { text: '', correct: ''},
+            { text: '', correct: ''}
+        ],
+    },
+    {
+        prompt: '',
+        answers: [
+            { text: '', correct: ''},
+            { text: '', correct: ''},
+            { text: '', correct: ''},
+            { text: '', correct: ''}
+        ],
+    },
+    {
+        prompt: '',
+        answers: [
+            { text: '', correct: ''},
+            { text: '', correct: ''},
+            { text: '', correct: ''},
+            { text: '', correct: ''}
+        ],
+    },
+    {
+        prompt: '',
+        answers: [
+            { text: '', correct: ''},
+            { text: '', correct: ''},
+            { text: '', correct: ''},
+            { text: '', correct: ''}
+        ],
+    },
+    {
+        prompt: '',
+        answers: [
+            { text: '', correct: ''},
+            { text: '', correct: ''},
+            { text: '', correct: ''},
+            { text: '', correct: ''}
+        ],
+    },
+    {
+        prompt: '',
+        answers: [
+            { text: '', correct: ''},
+            { text: '', correct: ''},
+            { text: '', correct: ''},
+            { text: '', correct: ''}
+        ],
+    },
+    {
+        prompt: '',
+        answers: [
+            { text: '', correct: ''},
+            { text: '', correct: ''},
+            { text: '', correct: ''},
+            { text: '', correct: ''}
+        ],
+    },
+    {
+        prompt: '',
+        answers: [
+            { text: '', correct: ''},
+            { text: '', correct: ''},
+            { text: '', correct: ''},
+            { text: '', correct: ''}
+        ],
+    },
+    {
+        prompt: '',
+        answers: [
+            { text: '', correct: ''},
+            { text: '', correct: ''},
+            { text: '', correct: ''},
+            { text: '', correct: ''}
+        ],
+    },
+    {
+        prompt: '',
+        answers: [
+            { text: '', correct: ''},
+            { text: '', correct: ''},
+            { text: '', correct: ''},
+            { text: '', correct: ''}
+        ],
+    },
+    {
+        prompt: '',
+        answers: [
+            { text: '', correct: ''},
+            { text: '', correct: ''},
+            { text: '', correct: ''},
+            { text: '', correct: ''}
+        ],
+    },
+    {
+        prompt: '',
+        answers: [
+            { text: '', correct: ''},
+            { text: '', correct: ''},
+            { text: '', correct: ''},
+            { text: '', correct: ''}
+        ],
+    },
+    {
+        prompt: '',
+        answers: [
+            { text: '', correct: ''},
+            { text: '', correct: ''},
+            { text: '', correct: ''},
+            { text: '', correct: ''}
+        ],
+    },
+    {
+        prompt: '',
+        answers: [
+            { text: '', correct: ''},
+            { text: '', correct: ''},
+            { text: '', correct: ''},
+            { text: '', correct: ''}
+        ],
+    },
+    {
+        prompt: '',
+        answers: [
+            { text: '', correct: ''},
+            { text: '', correct: ''},
+            { text: '', correct: ''},
+            { text: '', correct: ''}
+        ],
+    },
+    {
+        prompt: '',
+        answers: [
+            { text: '', correct: ''},
+            { text: '', correct: ''},
+            { text: '', correct: ''},
+            { text: '', correct: ''}
+        ],
+    },
+    {
+        prompt: '',
+        answers: [
+            { text: '', correct: ''},
+            { text: '', correct: ''},
+            { text: '', correct: ''},
+            { text: '', correct: ''}
+        ],
+    },
+    {
+        prompt: '',
+        answers: [
+            { text: '', correct: ''},
+            { text: '', correct: ''},
+            { text: '', correct: ''},
+            { text: '', correct: ''}
+        ],
+    },
 ];
 
 //Event listeners for the Begin button, Veiw highscores button, and submit (highscores) button
